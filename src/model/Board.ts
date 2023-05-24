@@ -29,6 +29,13 @@ export class Board {
     getCell(x: number, y: number): Cell | null {
         return this.cells[y][x] || null
     }
+    getCellFromID(id: number): Cell | undefined {
+        let cellFromID: Cell | undefined;
+        this.cells.forEach(row => {
+            row.forEach(cell => cell.id === id ? cellFromID = cell : cell)
+        })
+        return cellFromID
+    }
     setFigures() {
         this.cells.forEach((row, index) => {
             if (index === 1) {
