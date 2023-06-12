@@ -25,8 +25,8 @@ export class Figure {
         this.cell.figure = this
     }
 
-    canMove(cell: Cell): boolean {
-        if ((cell.figure?.color === this.color) || (cell.figure?.name === FigureNames.KING)) {
+    canMove(cell: Cell | null): boolean {
+        if ((cell?.figure?.color === this.color) || (cell?.figure?.name === FigureNames.KING)) {
             return false
         }
         return true

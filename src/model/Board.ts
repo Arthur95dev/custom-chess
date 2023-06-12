@@ -29,12 +29,24 @@ export class Board {
     getCell(x: number, y: number): Cell | null {
         return this.cells[y][x] || null
     }
-    getCellFromID(id: number): Cell | undefined {
-        let cellFromID: Cell | undefined;
+    getCellFromID(id: number): Cell {
+        let result: Array<Cell> = []
         this.cells.forEach(row => {
-            row.forEach(cell => cell.id === id ? cellFromID = cell : cell)
+            row.forEach(cell => cell.id === id ? result[0] = cell : cell)
         })
-        return cellFromID
+        return result[0]
+    }
+    getDiagonal(cell: Cell): Cell[] {
+        let diagonalCells: Cell[] = []
+        this.cells.forEach(row => {
+            row.forEach(cage => {
+                if (Math.abs(cage.x - cell.x) === Math.abs(cage.y - cell.y)) {
+                    diagonalCells.push(cage)
+                }
+            })
+        })
+        diagonalCells.sort((a, b) => a.id - b.id)
+        return diagonalCells
     }
     setFigures() {
         this.cells.forEach((row, index) => {

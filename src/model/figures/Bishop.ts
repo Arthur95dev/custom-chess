@@ -19,6 +19,7 @@ export class Bishop extends Figure {
             return false
         }
 
+        if (Math.abs(this.cell.x - cell.x) === Math.abs(this.cell.y - cell.y)) return true
         return false
     }
     
